@@ -1,0 +1,22 @@
+---
+title: "Programming in Base R"
+format: pdf
+editor: visual
+---
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+This is Homework 2
+
+```{r}
+
+```
