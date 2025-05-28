@@ -1,0 +1,147 @@
+---
+title: "code along 2"
+format: html
+editor: visual
+---
+
+
+## Packages
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+For the first part of this activity, we are going to work with the palmer penguins data set. Take a glimpse of the data set below. The data set name is called `penguins`. 
+
+```{r}
+glimpse(penguins)
+
+```
+
+## Question 1
+
+Using base R, change the column name of "flipper_length_mm" to be "fl". 
+
+```{r}
+
+#names(penguins)[3]
+
+names(penguins)[names(penguins)== "flipper_length_mm"] <- "fl"
+
+head(penguins)
+
+
+
+```
+
+Now, change the names of each column to be 1 through 8.
+
+```{r}
+
+
+names(penguins) <- 1:8
+penguins
+
+
+
+```
+
+Perhaps that isn't the best change.... how can we "start over"?
+
+**insert response here**
+
+you use the broom and clear the environment
+
+Now, using base R, calculate the difference between bill length and bill depth. Add it as a column to the existing penguins data set. 
+
+```{r}
+
+penguins$bill_diff <- penguins$bill_length_mm - penguins$bill_depth_mm
+
+
+```
+
+## Question 2 
+
+For loop in R Programming Language is useful to iterate over the elements of a list, data frame, vector, matrix, or any other object. Although loops can be overused, and we sometimes can use other functions to accomplish our goal (ex. `lapply()`), writing loops is an important skill to have as a data scientist. 
+
+Let's practice with writing for loops! Let's write a for loop that standardizes flipper length (subtract the mean and divide by the standard deviation). First, let's remove all missing values. Name the cleaned data set `clean_penguins`. Then, you do  standardization on the clean data set.
+
+`is.na` will look for na values
+
+```{r}
+
+clean_penguins <- penguins[!is.na(penguins$flipper_length_mm), ] #row by column
+
+clean_penguins$fl_standardized <- NA
+
+for (i in 1:nrow(penguins)) {
+  
+  penguins$fl_standardized[i] <- (penguins$flipper_length_mm[i] - mean(penguins$flipper_length_mm, na.rm = T)) / sd(penguins$flipper_length_mm, na.rm = T)
+  
+  
+}
+
+```
+
+However, cases like this are often more efficient using vectorization...
+
+```{r}
+
+
+(penguins$flipper_length_mm - mean(penguins$flipper_length_mm, na.rm = T)) / sd(penguins$flipper_length_mm, na.rm = T)
+
+
+```
+
+
+Now, let's use a for loop to create a new variable. Write a for loop that creates a new column called bill_cat, which has the value of "large" if the value of bill length is larger than 43, and "small" if the value is equal to or smaller than 43. Return the first 50 values of the vector. 
+
+```{r}
+
+#he will post solution for this, check solution
+
+
+```
+
+
+## Question 3
+
+Here is a very quick example working with lists below
+
+```{r}
+# Create a list with different types of elements
+student_info <- list(
+    name = "John Smith",
+    age = 20,
+    grades = data.frame(
+      perc = c(85, 92, 78),
+      letter = (c("B", "A", "C"))),
+    active = TRUE
+)
+```
+
+
+Let's have a conversation on what a list is, why it's useful, and how to access the elements within it!
+
+```{r}
+
+student_info$grades$letter
+
+student_info[[3]][[2]]
+
+
+student_info[[1]][2] = "Elijah"
+student_info
+
+
+unlist(student_info)
+
+
+a <- data.frame(unlist(student_info))
+a
+
+
+```

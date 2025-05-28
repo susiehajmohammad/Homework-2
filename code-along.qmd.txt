@@ -1,0 +1,93 @@
+---
+title: "Week-2 code-along"
+subtitle: "names, lists, and loops"
+format: html
+---
+
+## Packages
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+For the first part of this activity, we are going to work with the palmer penguins data set. Take a glimpse of the data set below. The data set name is called `penguins`. 
+
+```{r}
+
+```
+
+## Question 1
+
+Using base R, change the column name of "flipper_length_mm" to be "fl". 
+
+```{r}
+
+```
+
+Now, change the names of each column to be 1 through 8.
+
+```{r}
+
+```
+
+Perhaps that isn't the best change.... how can we "start over"?
+
+**insert response here**
+
+Now, using base R, calculate the difference between bill length and bill depth. Add it as a column to the exsisting penguins data set. 
+
+```{r}
+
+```
+
+## Question 2 
+
+For loop in R Programming Language is useful to iterate over the elements of a list, data frame, vector, matrix, or any other object. Although loops can be overused, and we sometimes can use other fucntions to accomplish our goal (ex. `lapply()`), writing loops is an important skill to have as a data scientist. 
+
+Let's practice with writing for loops! Let's write a for loop that standardizes flipper length (subtract the mean and divide by the standard deviation). First, let's remove all missing values. Name the cleaned data set `clean_penguins`. Then, do you standardization on the clean data set. 
+
+```{r}
+
+
+```
+
+However, cases like this are often more efficient using vectorization...
+
+```{r}
+
+```
+
+
+Now, let's use a for loop to create a new variable. Write a for loop that creates a new column called bill_cat, which has the value of "large" if the value of bill length is larger than 43, and "small" if the value is equal to or smaller than 43. Return the first 50 values of the vector. 
+
+```{r}
+
+
+```
+
+
+## Question 3
+
+Here is a very quick example working with lists below
+
+```{r}
+# Create a list with different types of elements
+student_info <- list(
+    name = "John Smith",
+    age = 20,
+    grades = data.frame(
+      perc = c(85, 92, 78),
+      letter = (c("B", "A", "C"))),
+    active = TRUE
+)
+```
+
+
+Let's have a conversation on what a list is, why it's useful, and how to access the elements within it!
+
+```{r}
+
+```
+
